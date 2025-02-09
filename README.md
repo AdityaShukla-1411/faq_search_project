@@ -25,6 +25,47 @@ source venv/bin/activate  # macOS/Linux
 pip install -r requirements.txt
 ```
 
+`requirements.txt` file should include all the necessary dependencies to run your Flask project.  
+
+
+### **🔹 Explanation of Dependencies**
+| **Package**  | **Purpose** |
+|-------------|------------|
+| `flask` | Core web framework for building the FAQ search API. |
+| `pandas` | Handles Excel file processing. |
+| `gdown` | Downloads the latest FAQ file from **Google Drive**. |
+| `openpyxl` | Reads `.xlsx` (Excel) files. |
+| `gunicorn` | Production WSGI server (needed for **Render Deployment**). |
+
+### **🔹 Install Dependencies**
+Run the following command in your terminal:
+```bash
+pip install -r requirements.txt
+```
+
+This will install all necessary packages for your project.
+
+---
+
+## **🔹 Deploy on Render (Using `requirements.txt`)**
+1. **Push `requirements.txt` to GitHub**:
+   ```bash
+   git add requirements.txt
+   git commit -m "Added requirements file"
+   git push origin main
+   ```
+2. **Deploy to Render**:
+   - In **Render**, set the **Build Command**:
+     ```bash
+     pip install -r requirements.txt
+     ```
+   - Set the **Start Command**:
+     ```bash
+     gunicorn app:app
+     ```
+
+---
+
 ### **2️⃣ Store the Excel File in a Shared Cloud Folder**
 1. Upload `faq_data.xlsx` to **Google Drive** or **Dropbox**.
 2. Share the folder with **edit access** for your team.
